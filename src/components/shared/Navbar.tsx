@@ -56,8 +56,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-2">
-        <button className="btn btn-accent">Plan</button>
-        <button className="btn btn-success">Saved</button>
+        <button className="btn">Plan</button>
+        <button className="btn">Saved</button>
       </div>
     </div>
   );
