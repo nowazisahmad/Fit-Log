@@ -1,10 +1,13 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-200 shadow-sm container mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden lg:hidden">
@@ -30,25 +33,25 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <Link href="/">Workout</Link>
+              <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Workout</Link>
             </li>
             <li>
-              <Link href="/">My Plan</Link>
+              <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>My Plan</Link>
             </li>
           </ul>
         </div>
         <div className="flex gap-2 items-center">
           <Image src={logo} alt="Fit Log Logo" />
-          <span className="text-green-300 text-4xl font-bold ">FITLOG</span>
+          <span className="text-green-300 text-3xl font-bold ">FITLOG</span>
         </div>
       </div>
       <div className="navbar-center hidden md:flex lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href="/">Workout</Link>
+            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Workout</Link>
           </li>
           <li>
-            <Link href="/">My Plan</Link>
+            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>My Plan</Link>
           </li>
         </ul>
       </div>

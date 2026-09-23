@@ -1,6 +1,6 @@
 
 export default function Home() {
   return (
-    <div><h2>Home Page</h2></div>
+    <div className="container mx-auto py-8"><h2>Home Page</h2></div>
   );
 }
