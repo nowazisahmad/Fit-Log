@@ -1,5 +1,5 @@
 import Banner from "@/components/homepage/Banner";
-import Fitlog from "@/components/homepage/Fitlog";
+import Fitlog from "@/components/homepage/Workout";
 
 export default function Home() {
   return (
