@@ -1,14 +1,15 @@
 
 import { IWorkout } from "@/type";
-import FitlogCard from "../shared/WorkoutCard";
+import WorkoutCard from "../shared/WorkoutCard";
 
 const getWorkout = async () => {
-  try {
-    const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
-    const data = await res.json();
+  try{
+
+    const response = await fetch("https://api.abcz.workers.dev/api/fitlog");
+    const data = await response.json();
     return data;
-  } catch (error) {
-    console.error("Error fetching fitlog data:", error);
+  }catch(error){
+    console.error("Error fetching workout data:", error);
     return [];
   }
 };
@@ -27,7 +28,7 @@ const Workout = async() => {
       </div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {workoutData.map((Workout: IWorkout, ind: number) => {
-          return <FitlogCard key={ind} workout={Workout} />;
+          return <WorkoutCard key={ind} workout={Workout} />;
         })}
       </div>
     </section>
