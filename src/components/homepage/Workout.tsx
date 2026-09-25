@@ -27,7 +27,7 @@ const Workout = async() => {
         </p>
       </div>
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {workoutData.map((Workout: IWorkout, ind: number) => {
+        {workoutData.slice(0,9).map((Workout: IWorkout, ind: number) => {
           return <WorkoutCard key={ind} workout={Workout} />;
         })}
       </div>

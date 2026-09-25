@@ -32,11 +32,14 @@ const Navbar = () => {
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
+          <li>
+            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Home</Link>
+          </li>
             <li>
-              <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Workout</Link>
+              <Link href="/workouts" className={pathname === "/workouts" ? "text-blue-500" : ""}>Workout</Link>
             </li>
             <li>
-              <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>My Plan</Link>
+              <Link href="/My-Plan" className={pathname === "/My-Plan" ? "text-blue-500" : ""}>My Plan</Link>
             </li>
           </ul>
         </div>
@@ -48,10 +51,13 @@ const Navbar = () => {
       <div className="navbar-center hidden md:flex lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Workout</Link>
+            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Home</Link>
           </li>
           <li>
-            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>My Plan</Link>
+            <Link href="/workouts" className={pathname === "/workouts" ? "text-blue-500" : ""}>Workout</Link>
+          </li>
+          <li>
+            <Link href="/My-Plan" className={pathname === "/My-Plan" ? "text-blue-500" : ""}>My Plan</Link>
           </li>
         </ul>
       </div>
