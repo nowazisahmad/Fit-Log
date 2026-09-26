@@ -1,22 +1,19 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.png"
 import { usePathname } from "next/navigation";
 import { useWorkouts } from "@/context/workoutcontext";
-
+import Link from "next/link";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const {
-    todaysPlan,
-    saveForLater,
-  } = useWorkouts();
+  const { todaysPlan, saveForLater } = useWorkouts();
+
   return (
     <div className="navbar bg-base-200 shadow-sm container mx-auto">
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost md:hidden lg:hidden">
+        <div className="dropdown lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost">
             <svg
               aria-label="Menu"
               xmlns="http://www.w3.org/2000/svg"
@@ -25,51 +22,100 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-          <li>
-            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Home</Link>
-          </li>
             <li>
-              <Link href="/workouts" className={pathname === "/workouts" ? "text-blue-500" : ""}>Workout</Link>
+              <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>
+                Home
+              </Link>
             </li>
             <li>
-              <Link href="/My-Plan" className={pathname === "/My-Plan" ? "text-blue-500" : ""}>My Plan</Link>
+              <Link
+                href="/workouts"
+                className={pathname === "/workouts" ? "text-blue-500" : ""}
+              >
+                Workout
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/My-Plan"
+                className={pathname === "/My-Plan" ? "text-blue-500" : ""}
+              >
+                My Plan
+              </Link>
+            </li>
+            <li className="mt-2 md:hidden">
+              <button className="btn w-full justify-between">
+                Plan
+                <span className="border rounded-[50%] text-slate-900 bg-green-300 px-2.5">
+                  {todaysPlan?.length ?? 0}
+                </span>
+              </button>
+            </li>
+            <li className="md:hidden">
+              <button className="btn w-full justify-between">
+                Saved
+                <span className="border rounded-[50%] text-slate-900 bg-green-300 px-2.5">
+                  {saveForLater?.length ?? 0}
+                </span>
+              </button>
             </li>
           </ul>
         </div>
         <div className="flex gap-2 items-center">
           <Image src={logo} alt="Fit Log Logo" />
-          <span className="text-green-300 text-3xl font-bold ">FITLOG</span>
+          <span className="text-green-300 text-3xl font-bold">FITLOG</span>
         </div>
       </div>
-      <div className="navbar-center hidden md:flex lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1 gap-2">
           <li>
-            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>Home</Link>
+            <Link href="/" className={pathname === "/" ? "text-blue-500" : ""}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link href="/workouts" className={pathname === "/workouts" ? "text-blue-500" : ""}>Workout</Link>
+            <Link
+              href="/workouts"
+              className={pathname === "/workouts" ? "text-blue-500" : ""}
+            >
+              Workout
+            </Link>
           </li>
           <li>
-            <Link href="/My-Plan" className={pathname === "/My-Plan" ? "text-blue-500" : ""}>My Plan</Link>
+            <Link
+              href="/My-Plan"
+              className={pathname === "/My-Plan" ? "text-blue-500" : ""}
+            >
+              My Plan
+            </Link>
           </li>
         </ul>
       </div>
-      <div className="navbar-end gap-2">
-        <button className="btn">Plan<span className="border rounded-[50%] text-slate-900 bg-green-300 px-2.5">{todaysPlan?.length ?? 0}</span></button>
-        <button className="btn">Saved<span className="border rounded-[50%] px-2.5">{saveForLater?.length ?? 0}</span></button>
+      <div className="navbar-end gap-2 hidden md:flex">
+        <button className="btn">
+          Plan
+          <span className="border rounded-[50%] text-slate-900 bg-green-300 px-2.5">
+            {todaysPlan?.length ?? 0}
+          </span>
+        </button>
+        <button className="btn">
+          Saved
+          <span className="border rounded-[50%] text-slate-900 bg-green-300 px-2.5">
+            {saveForLater?.length ?? 0}
+          </span>
+        </button>
       </div>
     </div>
   );

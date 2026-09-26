@@ -1,4 +1,3 @@
-import Link from "next/link";
 
 const NotFound = () => {
   return (
@@ -9,9 +8,6 @@ const NotFound = () => {
       <h2 className="text-xl font-bold uppercase text-white mb-2">
         PAGE NOT FOUND
       </h2>
-      <Link href="/" className="bg-green-300 text-slate-900 font-bold text-xs uppercase px-5 py-3 rounded-lg">
-        Go to Home
-      </Link>
     </div>
   );
 }
