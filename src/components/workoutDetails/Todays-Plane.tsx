@@ -3,18 +3,19 @@
 import { IWorkout } from "@/type";
 import { useWorkouts } from "@/context/workoutcontext";
 import { toast } from "react-toastify";
+import { FaRegCalendarPlus } from "react-icons/fa";
 
-interface TodaysPlaneProps {
+interface TodaysPlanProps {
   workout: IWorkout;
 }
 
-const TodaysPlane = ({ workout }: TodaysPlaneProps) => {
+const TodaysPlan = ({ workout }: TodaysPlanProps) => {
   const { addToTodaysPlan, isInTodaysPlan } = useWorkouts();
   const alreadyAdded = isInTodaysPlan(workout.id);
   const handleAddToTodaysPlan = () => {
     const added = addToTodaysPlan(workout);
     if (!added) {
-      toast.info("Already Add to today's plan");
+      toast.info("Already Added");
       return;
     }
     toast.success(`${workout.name} Added to today's plan`);
@@ -23,18 +24,18 @@ const TodaysPlane = ({ workout }: TodaysPlaneProps) => {
   return (
     <button
       type="button"
-      onClick={handleAddToTodaysPlan}
+      onClick={() => handleAddToTodaysPlan()}
       aria-disabled={alreadyAdded}
       className={`flex w-full items-center justify-center gap-2 rounded-[10px] px-4 py-2.5 text-sm font-medium transition
         ${
           alreadyAdded
             ? "cursor-not-allowed border border-[#30343d] bg-[#20242b] text-gray-500"
-            : "bg-[#c8ff00] text-black hover:bg-[#d5ff33]"
+            : "bg-green-300 text-black"
         }
       `}
     >
       <span className="text-base">
-        {alreadyAdded ? "✓" : "+"}
+        {alreadyAdded ? "✓" : <FaRegCalendarPlus />}
       </span>
 
       <span>
@@ -46,4 +47,4 @@ const TodaysPlane = ({ workout }: TodaysPlaneProps) => {
   );
 };
 
-export default TodaysPlane;
+export default TodaysPlan;

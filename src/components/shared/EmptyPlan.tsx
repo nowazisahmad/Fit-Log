@@ -8,7 +8,7 @@ interface EmptyPlanProps {
 
 const EmptyPlan = ({ saved = false }: EmptyPlanProps) => {
   return (
-    <div className="flex min-h-55 flex-col items-center justify-center rounded-xl border border-dashed border-[#272b33] bg-[#0f1115] px-6 text-center">
+    <div className="flex min-h-55 flex-col items-center justify-center rounded-xl border border-dashed border-[#272b33] bg-[#0f1115] px-6 text-center w-full max-w-6xl mx-auto">
       <h3 className="text-xl font-extrabold tracking-wide text-white">
         NOTHING HERE YET
       </h3>
@@ -20,7 +20,7 @@ const EmptyPlan = ({ saved = false }: EmptyPlanProps) => {
       {!saved && (
         <Link
           href="/workouts"
-          className="mt-5 rounded-full bg-[#c8ff00] px-5 py-2 text-sm font-semibold text-black transition hover:bg-[#d8ff45]"
+          className="mt-5 rounded-full bg-green-300 px-5 py-2 text-sm font-semibold text-black"
         >
           Go to workouts
         </Link>

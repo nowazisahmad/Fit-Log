@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { IWorkout } from "@/type";
-import TodaysPlane from "@/components/workoutDetails/Todays-Plane";
+import TodaysPlan from "@/components/workoutDetails/Todays-Plane";
 import Saved from "@/components/workoutDetails/Saved";
 
 interface IworkoutDetailsPageProps {
@@ -77,7 +77,7 @@ const WorkoutDetailsPage = async ({ params }: IworkoutDetailsPageProps) => {
                   {workout.muscleGroups.map((group) => (
                     <span
                       key={group}
-                      className="rounded-full bg-[#c8ff00] px-3 py-1 text-[10px] font-bold text-black"
+                      className="rounded-full bg-green-300 px-3 py-1 text-[10px] font-bold text-black"
                     >
                       {group}
                     </span>
@@ -127,8 +127,8 @@ const WorkoutDetailsPage = async ({ params }: IworkoutDetailsPageProps) => {
                   ))}
                 </ol>
               </div>
-              <div className="grid grid-cols-2 gap-3">
-                <TodaysPlane workout={workout} />
+              <div className="grid grid-cols-2 gap-3 py-5">
+                <TodaysPlan workout={workout} />
                 <Saved workout={workout} />
               </div>
             </div>

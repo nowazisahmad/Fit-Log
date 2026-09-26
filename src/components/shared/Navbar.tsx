@@ -3,16 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo.png";
 import { usePathname } from "next/navigation";
-import { useContext } from "react";
-import { WorkoutsContext } from "@/context/workoutcontext";
+import { useWorkouts } from "@/context/workoutcontext";
 
 
 const Navbar = () => {
   const pathname = usePathname();
   const {
-    todaysPlane,
+    todaysPlan,
     saveForLater,
-  } = useContext(WorkoutsContext);
+  } = useWorkouts();
   return (
     <div className="navbar bg-base-200 shadow-sm container mx-auto">
       <div className="navbar-start">
@@ -69,8 +68,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-2">
-        <button className="btn">Plan<span className="border rounded-[50%] text-slate-900 bg-green-300 px-[10px]">{todaysPlane?.length ?? 0}</span></button>
-        <button className="btn">Saved<span className="border rounded-[50%] px-[10px]">{saveForLater?.length ?? 0}</span></button>
+        <button className="btn">Plan<span className="border rounded-[50%] text-slate-900 bg-green-300 px-2.5">{todaysPlan?.length ?? 0}</span></button>
+        <button className="btn">Saved<span className="border rounded-[50%] px-2.5">{saveForLater?.length ?? 0}</span></button>
       </div>
     </div>
   );

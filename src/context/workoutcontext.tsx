@@ -4,7 +4,7 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import { IWorkout } from "@/type";
 
 interface WorkoutsContextProps {
-  todaysPlane: IWorkout[];
+  todaysPlan: IWorkout[];
   saveForLater: IWorkout[];
 
   addToTodaysPlan: (workout: IWorkout) => boolean;
@@ -22,11 +22,11 @@ const WorkoutsContext = createContext<WorkoutsContextProps | undefined>(
 );
 
 export const WorkoutsProvider = ({ children }: { children: ReactNode }) => {
-  const [todaysPlane, setTodaysPlane] = useState<IWorkout[]>([]);
+  const [todaysPlan, setTodaysPlan] = useState<IWorkout[]>([]);
   const [saveForLater, setSaveForLater] = useState<IWorkout[]>([]);
 
   const isInTodaysPlan = (id: number) => {
-    return todaysPlane.some((item) => item.id === id);
+    return todaysPlan.some((item) => item.id === id);
   };
   const isSavedForLater = (id: number) => {
     return saveForLater.some((item) => item.id === id);
@@ -35,7 +35,7 @@ export const WorkoutsProvider = ({ children }: { children: ReactNode }) => {
     if (isInTodaysPlan(workout.id)) {
       return false;
     }
-    setTodaysPlane((prev) => [...prev, workout]);
+    setTodaysPlan((prev) => [...prev, workout]);
     return true;
   };
   const saveWorkoutForLater = (workout: IWorkout) => {
@@ -46,7 +46,7 @@ export const WorkoutsProvider = ({ children }: { children: ReactNode }) => {
     return true;
   };
   const removeFromTodaysPlan = (id: number) => {
-    setTodaysPlane((prev) => prev.filter((item) => item.id !== id));
+    setTodaysPlan((prev) => prev.filter((item) => item.id !== id));
   };
   const removeFromSaved = (id: number) => {
     setSaveForLater((prev) => prev.filter((item) => item.id !== id));
@@ -54,7 +54,7 @@ export const WorkoutsProvider = ({ children }: { children: ReactNode }) => {
   return (
     <WorkoutsContext.Provider
       value={{
-        todaysPlane,
+        todaysPlan,
         saveForLater,
         addToTodaysPlan,
         saveWorkoutForLater,

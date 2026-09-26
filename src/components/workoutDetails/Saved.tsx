@@ -3,6 +3,7 @@
 import { IWorkout } from "@/type";
 import { useWorkouts } from "@/context/workoutcontext";
 import { toast } from "react-toastify";
+import { FaRegBookmark } from "react-icons/fa";
 
 interface SavedProps {
   workout: IWorkout;
@@ -17,17 +18,17 @@ const Saved = ({ workout }: SavedProps) => {
     const saved = saveWorkoutForLater(workout);
 
     if (!saved) {
-      toast.info("Already save for later");
+      toast.info("Already Saved");
       return;
     }
 
-    toast.success(`${workout.name} saved for later`);
+    toast.success(`${workout.name} Saved for Later`);
   };
 
   return (
     <button
       type="button"
-      onClick={handleSaveForLater}
+      onClick={() => handleSaveForLater()}
       aria-disabled={alreadySaved}
       className={`flex w-full items-center justify-center gap-2 rounded-[10px] border px-4 py-2.5 text-sm font-medium transition ${
         alreadySaved
@@ -35,7 +36,7 @@ const Saved = ({ workout }: SavedProps) => {
           : "border-[#353942] bg-transparent text-white hover:bg-[#1b1f26]"
       }`}
     >
-      <span>{alreadySaved ? "✓" : "☆"}</span>
+      <span>{alreadySaved ? "✓" : <FaRegBookmark />}</span>
 
       <span>
         {alreadySaved ? "Saved for later" : "Save for later"}

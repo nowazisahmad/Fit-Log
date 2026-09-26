@@ -4,7 +4,7 @@ import Link from "next/link";
 const Icon = ({ type }: { type: "clock" | "flame" | "star" }) => (
   <svg
     aria-hidden="true"
-    className="h-[19px] w-[19px]"
+    className="h-5 w-5"
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
@@ -32,13 +32,13 @@ interface WorkoutCardProps {
 const WorkoutCard = ({ workout }: WorkoutCardProps) => {
   return (
     <Link href={`/workouts/${workout.id}`}>
-    <div className="group overflow-hidden rounded-2xl bg-[#15171d] text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl">
-      <div className="relative h-[250px] w-full overflow-hidden">
+    <div className="group overflow-hidden rounded-2xl bg-[#15171d] text-white shadow-lg">
+      <div className="relative h-62 w-full overflow-hidden">
         <Image
           src={workout.image}
           alt={workout.name}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover"
         />
       </div>
       <div className="p-7">
